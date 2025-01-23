@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥚📉</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/d1f89f90e5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">🥚📉</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mailto:admin@eggs.cheap">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Did Donald Trump Make Eggs Cheaper?</h1>
+        <p class="lead">Egg prices were a big deal in the 2024 election. Let's keep track of the president's promise to
+            make them cheaper!</p>
+    </div>
+
+    <!-- Graph Section -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h2 class="display-6">No. They Aren't Cheaper (...Yet?)</h2>
+                <img class="img-fluid" src="data:image/png;base64,{{ plot_url }}"
+                    alt="Graph">
+                <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+                <script>
+                    kofiWidgetOverlay.draw('clau72', {
+                        'type': 'floating-chat',
+                        'floating-chat.donateButton.text': 'Buy Me Eggs',
+                        'floating-chat.donateButton.background-color': '#00bfa5',
+                        'floating-chat.donateButton.text-color': '#fff'
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Carson Lau. All rights reserved.</p>
+            <a href="https://bsky.app/profile/eggs.cheap"><i class="fa-brands fa-bluesky"></i> Follow on Bluesky</a>
+        </div>
+    </footer>
+    <script>
+        const jsConfetti = new JSConfetti()
+        
+        jsConfetti.addConfetti({
+            emojis: ['🥚','💵','🍳','🗽','🔴','⚪','🔵', '🦅']
+        })
+        </script>
+</body>
+
+</html>
