@@ -46,17 +46,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <h2 class="display-6">No. They Aren't Cheaper (...Yet?)</h2>
-                <img class="img-fluid" src="data:image/png;base64,{{ plot_url }}"
-                    alt="Graph">
-                <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-                <script>
-                    kofiWidgetOverlay.draw('clau72', {
-                        'type': 'floating-chat',
-                        'floating-chat.donateButton.text': 'Buy Me Eggs',
-                        'floating-chat.donateButton.background-color': '#00bfa5',
-                        'floating-chat.donateButton.text-color': '#fff'
-                    });
-                </script>
+                <img class="img-fluid" src="data:image/png;base64,{{ plot_url }}" alt="Graph">
             </div>
         </div>
     </div>
@@ -68,13 +58,26 @@
             <a href="https://bsky.app/profile/eggs.cheap"><i class="fa-brands fa-bluesky"></i> Follow on Bluesky</a>
         </div>
     </footer>
+
+    <!-- Additional Scripts-->
+
     <script>
         const jsConfetti = new JSConfetti()
-        
+
         jsConfetti.addConfetti({
-            emojis: ['🥚','💵','🍳','🗽','🔴','⚪','🔵', '🦅']
+            emojis: ['🥚', '💵', '🍳', '🗽', '🔴', '⚪', '🔵', '🦅']
         })
-        </script>
+    </script>
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+        kofiWidgetOverlay.draw('clau72', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Buy Me Eggs',
+            'floating-chat.donateButton.background-color': '#00bfa5',
+            'floating-chat.donateButton.text-color': '#fff'
+        });
+    </script>
 </body>
 
 </html>
