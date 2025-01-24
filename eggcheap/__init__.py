@@ -24,7 +24,8 @@ def plot():
         plt.title("YES!",fontsize=30)
 
     plt.axhline(y=BIDEN_PRICE, color='b', linestyle="--", label="Biden Final Price")
-    plt.plot(dates,prices, color="r")
+    plt.plot(dates,prices, color="r", label="Current Price")
+    plt.legend(loc="lower right")
     plt.annotate(f"${prices[-1]}",xy=(dates[-1], prices[-1]),
     textcoords='offset points', ha='center', va='center'
     )
