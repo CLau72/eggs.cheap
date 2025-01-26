@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Graph updated daily from https://tradingeconomics.com/commodity/eggs-us
+- Graph updated daily from [https://tradingeconomics.com/commodity/eggs-us](https://tradingeconomics.com/commodity/eggs-us)
 - Simple yes/no displayed when price changes to be above or below
 - ko-fi donation button
 
@@ -17,8 +17,9 @@
 
 ## To-Dos
 
-- [ ] Set up basic webpage template
-- [ ] Scrape data from https://tradingeconomics.com/commodity/eggs-us daily
-  - [ ] Add day's value to database
+- [x] Set up basic webpage template
+- [x] Scrape data from [https://tradingeconomics.com/commodity/eggs-us](https://tradingeconomics.com/commodity/eggs-us) daily
+    - [x] Add day's value to database
+    - [ ] Use database for chart rendering
 - [x] Render chart on simple webpage
 - [x] Add Donation button
