@@ -47,7 +47,7 @@ def plot():
     plt.annotate(f"${prices[-1]}",xy=(dates[-1], prices[-1]),
     textcoords='offset points', ha='center', va='center'
     )
-    plt.ylim(bottom=0, top=8)
+    plt.ylim(bottom=0, top=(max(prices)+2))
 
     # Save the plot to a BytesIO object
     img = io.BytesIO()
