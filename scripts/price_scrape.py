@@ -11,10 +11,12 @@ URL = "https://tradingeconomics.com/commodity/eggs-us"
 
 # .env file load
 load_dotenv(dotenv_path='../.env')
-database_url = os.getenv('DATABASE_URL')
+database_url = os.getenv('DATABASE_URI')
+
+print(database_url)
 
 # DB setup
-engine = create_engine(database_url)
+engine = create_engine(database_url, pool_recycle=280)
 Base = declarative_base()
 
 class Price(Base):
@@ -44,5 +46,9 @@ def price_scrape(url=URL):
 
 
 price = Price(price=price_scrape(), date=date.today())
-session.add(price)
-session.commit()
+try:
+    session.add(price)
+    session.commit()
+    print(f"New data: ${price.price}, {price.date} added successfully")
+except:
+    print("Failed to add new data")
