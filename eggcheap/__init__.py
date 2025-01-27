@@ -1,18 +1,36 @@
 from flask import Flask, render_template
+from dotenv import load_dotenv
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 import matplotlib.pyplot as plt
 import io
+import os
 import base64
 
+load_dotenv(dotenv_path=".env")
+
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI")
+db = SQLAlchemy(app)
+
+class Prices(db.Model):
+    date = db.Column(db.Date, primary_key = True)
+    price = db.Column(db.Numeric(10,2), nullable = False)
 
 BIDEN_PRICE = 6.12
 
 @app.route('/')
 def plot():
 
+    dates = []
+    prices = []
+
     # Data
-    dates = ["2025-01-20","2025-01-21","2025-01-22","2025-01-23"]
-    prices = [6.12,6.55,6.55,6.55]
+    price_data = Prices.query.order_by(Prices.date).all()
+    for value in price_data:
+        dates.append(value.date.strftime("%Y-%m-%d"))
+        prices.append(value.price)
+
 
     # Create a plot
     plt.figure(figsize=(8, 5))
@@ -42,5 +60,17 @@ def plot():
     # Render the plot in an HTML template
     return render_template('index.html', plot_url=plot_url)
 
+@app.route('/dbtest')
+def dbtest():
+    price_array = []
+    date_array = []
+
+    prices = Prices.query.order_by(Prices.date).all()
+    for price in prices:
+        price_array.append(price.price)
+        date_array.append(price.date)
+    return price_array
+
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True)
