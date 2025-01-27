@@ -11,6 +11,7 @@ load_dotenv(dotenv_path=".env")
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI")
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_recycle' : 280} 
 db = SQLAlchemy(app)
 
 class Prices(db.Model):

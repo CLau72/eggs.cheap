@@ -16,7 +16,7 @@ database_url = os.getenv('DATABASE_URI')
 print(database_url)
 
 # DB setup
-engine = create_engine(database_url)
+engine = create_engine(database_url, pool_recycle=280)
 Base = declarative_base()
 
 class Price(Base):
