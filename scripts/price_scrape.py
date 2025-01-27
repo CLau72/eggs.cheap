@@ -11,7 +11,7 @@ URL = "https://tradingeconomics.com/commodity/eggs-us"
 
 # .env file load
 load_dotenv(dotenv_path='../.env')
-database_url = os.getenv('DATABASE_URL')
+database_url = os.getenv('DATABASE_URI')
 
 print(database_url)
 
