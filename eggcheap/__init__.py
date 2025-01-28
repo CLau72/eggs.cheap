@@ -1,11 +1,7 @@
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import matplotlib.pyplot as plt
-import io
 import os
-import base64
 
 load_dotenv(dotenv_path=".env")
 
