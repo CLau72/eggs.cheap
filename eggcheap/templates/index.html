@@ -11,6 +11,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/d1f89f90e5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
@@ -54,7 +56,65 @@
     <main class="container">
         <div class="row justify-content-center">
             <div class="text-center">
-                <img class="img-fluid" src="data:image/png;base64,{{ plot_url }}" alt="Graph">
+                <canvas id="lineChart", width="900" height="500">
+                    <script>
+                        const ctx = document.getElementById('lineChart')
+
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: {{ labels | safe }},
+                                datasets: [
+                                    {
+                                        label: "Price (USD)",
+                                        data: {{ values | safe }},
+                                        fill: false,
+                                        borderColor: "rgb(192,20,20)",
+                                        lineTension: 0.1
+                                    }
+                                ]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: '$USD/Dozen'
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'No.',
+                                        font: {
+                                            weight: 'bold',
+                                            size: 30
+                                        }
+                                    },
+                                    legend: {
+                                        display: true,
+                                        position: "bottom"
+                                    },
+                                    annotation: {
+                                        annotations: {
+                                            line1: {
+                                               type: 'line', 
+                                               yMin: 6.12,
+                                               yMax: 6.12,
+                                               borderColor: 'rgb(20,40,192)',
+                                               borderWidth: 2,
+                                               borderDash: [15, 5]
+                                            }
+                                        }
+                                    }
+                                },
+                                responsive: false
+                            }
+                        });
+                    </script>
+                </canvas>
             </div>
         </div>
     </main>
