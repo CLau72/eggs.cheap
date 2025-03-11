@@ -28,8 +28,13 @@ def plot():
         dates.append(value.date.strftime("%Y-%m-%d"))
         prices.append("{:.2f}".format(float(value.price)))
 
+    if float(prices[-1]) >= BIDEN_PRICE:
+        title = "No."
+    else:
+        title = "Yes!"
+
     # Render the plot in an HTML template
-    return render_template('index.html', labels=dates, values=prices)
+    return render_template('index.html', labels=dates, values=prices, title=title)
 
 @app.route('/dbtest')
 def dbtest():
