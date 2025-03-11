@@ -87,7 +87,7 @@
                                 plugins: {
                                     title: {
                                         display: true,
-                                        text: 'No.',
+                                        text: {{ title | tojson }},
                                         font: {
                                             weight: 'bold',
                                             size: 30
@@ -127,6 +127,7 @@
     </footer>
 
     <!-- Additional Scripts-->
+    {%if title == "Yes!" %}
 
     <script>
         const jsConfetti = new JSConfetti()
@@ -135,6 +136,8 @@
             emojis: ['🥚', '💵', '🍳', '🗽', '🔴', '⚪', '🔵', '🦅']
         })
     </script>
+
+    {% endif %}
 
     <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
     <script>
